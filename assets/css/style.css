@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #c7f1c7;
+}
+
+.container {
+    text-align: center;
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.section {
+    min-height: calc(100vh - 64px);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#city-input {
+    width: 20rem;
+}
+
+#country {
+    height: 30px;
+}
+
+#description-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+
+#description {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+#details-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#humidity {
+    border-right: 1px solid #000;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+#city-country {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-size: 28px;
+}
+
+#city {
+    margin: 10px;
+}
