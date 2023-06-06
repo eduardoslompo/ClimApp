@@ -14,18 +14,45 @@ const windElement = document.querySelector('#wind span');
 
 const weatherContainer = document.querySelector('#weather-data');
 
+const loader = document.querySelector("#loader");
+const errorMessage = document.querySelector("#error-message");
+
 //Functions
+const toggleLoader = () => {
+    loader.classList.toggle("hide");
+}
+
+const hideInformation = () => {
+    weatherContainer.classList.add("hide");
+    errorMessage.classList.add("hide");
+}
+
+const showErrorMessage = () => {
+    errorMessage.classList.remove("hide");
+}
+
 const getWeatherData = async (city) => {
+    toggleLoader();
+
     const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
 
     const res = await fetch(apiWeatherURL);
     const data = await res.json();
 
+    toggleLoader();
+
     return data;
 }
 
 const showWeatherData = async (city) => {
+    hideInformation();
+
     const data = await getWeatherData(city);
+
+    if(data.cod === "404"){
+        showErrorMessage();
+        return;
+    }
 
     cityElement.innerText = data.name;
     tempElement.innerText = parseInt(data.main.temp);
@@ -37,6 +64,7 @@ const showWeatherData = async (city) => {
 
     weatherContainer.classList.remove("hide");
 }
+
 
 
 //Events
